@@ -1,0 +1,53 @@
+version: '3'
+services:
+  ds-fis-container:
+    # Don't remove/change docker image version (used in CI)
+    image: 'dsfisproxyapp:1.00.00'
+    container_name: 'dsfisproxyapp'
+    depends_on:
+      - oi4-mqtt-broker
+    network_mode: host
+    environment:
+      - NODE_ENV=production
+    logging: 
+      driver: syslog
+      options:
+        syslog-facility: "local3"
+        tag: "DSFisDockerContainer"
+
+  flow-container:
+    image: 'ghcr.io/pcps/flowdeviceverification-amd64:6.4.402'
+    depends_on:
+      - oi4-mqtt-broker
+    container_name: 'flowdeviceverificationapp'
+    network_mode: host
+    environment:
+      - mqttBrokerAddress=127.0.0.1
+      - appIdOTConnector=urn:endress.com/DSFISProxy/nd/202006260900
+      - serialNumber=713814705
+      - encryptionEnabled=false
+      - logLevel=debug
+    logging: 
+      driver: syslog
+      options:
+        syslog-facility: "local3"
+        tag: "FlowDockerContainer"
+
+  oi4-mqtt-broker:
+    image: eclipse-mosquitto
+    container_name: oi4-mqtt-broker
+    network_mode: host
+    expose:
+      - '1883'
+    ports:
+      - '1883:1883'
+    logging: 
+      driver: syslog
+      options:
+        syslog-facility: "local3"
+        tag: "BrokerContainer"
+
+networks:
+  default:
+    external: true
+    name: flecs
