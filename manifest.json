@@ -1,7 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/FLECS-Technologies/app-sdk/3.0.0/manifest.schema.json",
-    "_schemaVersion": "3.0.0",
+    "_schemaVersion": "3.1.0",
     "app": "com.endress.hbv",
-    "version": "##VERSION##",
-    "revision": "0"
+    "version": "##VERSION##"
 }
