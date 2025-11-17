@@ -2,7 +2,7 @@ version: "3"
 services:
   ds-fis-container:
     # Don't remove/change docker image version (used in CI)
-    image: "ghcr.io/pcps/dsfisproxyapp:1.1"
+    image: "ghcr.io/pcps/dsfisproxyapp:1.1.2"
     environment:
       - NODE_ENV=production
     logging:
