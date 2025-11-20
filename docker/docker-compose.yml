@@ -4,7 +4,7 @@ services:
     image: "ghcr.io/pcps/dsfisproxyapp:1.1.5"
     environment:
       - mqttBrokerAddress=flecs-mqtt
-      - grpcServerAddress="eh-sw-edge
+      - grpcServerAddress=eh-sw-edge
     logging:
       driver: syslog
       options:
