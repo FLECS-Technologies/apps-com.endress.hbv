@@ -1,7 +1,6 @@
-version: "3"
 services:
   flow-container:
-    image: "ghcr.io/pcps/flowdeviceverification-amd64:6.4.402"
+    image: "ghcr.io/pcps/flowdeviceverification-arm:6.5.802"
     environment:
       - mqttBrokerAddress=flecs-mqtt
       - appIdOTConnector=urn:endress.com/DSFISProxy/nd/202006260900
