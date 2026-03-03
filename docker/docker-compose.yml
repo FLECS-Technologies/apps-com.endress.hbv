@@ -1,16 +1,5 @@
 version: "3"
 services:
-  ds-fis-container:
-    image: "ghcr.io/pcps/dsfisproxyapp:1.1.5"
-    environment:
-      - mqttBrokerAddress=flecs-mqtt
-      - grpcServerAddress=eh-sw-edge
-    logging:
-      driver: syslog
-      options:
-        syslog-facility: "local3"
-        tag: "DSFisDockerContainer"
-
   flow-container:
     image: "ghcr.io/pcps/flowdeviceverification-amd64:6.4.402"
     environment:
