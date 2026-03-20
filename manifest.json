@@ -2,5 +2,13 @@
     "$schema": "https://raw.githubusercontent.com/FLECS-Technologies/app-sdk/3.0.0/manifest.schema.json",
     "_schemaVersion": "3.1.0",
     "app": "com.endress.hbv",
-    "version": "##VERSION##"
+    "version": "##VERSION##",
+    "image": "flecs.azurecr.io/com.endress.hbv",
+    "env": [
+        "mqttBrokerAddress=flecs-mqtt",
+        "appIdOTConnector=urn:endress.com/DSFISProxy/nd/202006260900",
+        "serialNumber=713814705",
+        "encryptionEnabled=false",
+        "logLevel=debug"
+    ]
 }
