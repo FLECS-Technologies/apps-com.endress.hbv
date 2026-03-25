@@ -3,4 +3,4 @@ ARG ARCH
 ARG VERSION
 ARG VARIANT
 
-FROM ghcr.io/pcps/flowdeviceverification-arm:${VERSION}
+FROM ghcr.io/pcps/flowdeviceverification:${VERSION}
