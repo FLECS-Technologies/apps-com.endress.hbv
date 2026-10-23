@@ -1,0 +1,9 @@
+services:
+  app:
+    image: ghcr.io/pcps/flowdeviceverification:6.5.802
+    environment:
+      - mqttBrokerAddress=flecs-mqtt
+      - appIdOTConnector=${appIdOTConnector:-urn:endress.com/DSFISProxy/nd/202006260900}
+      - serialNumber=${serialNumber:-713814705}
+      - encryptionEnabled=${encryptionEnabled:-false}
+      - logLevel=${logLevel:-debug}

@@ -1,0 +1,79 @@
+apiVersion: margo/v1alpha1
+kind: ApplicationDescription
+id: com-endress-hbv
+metadata:
+  name: HBV
+  version: "0.0.0" # overwritten by `bart`, this is just a placeholder
+  description: Endress+Hauser HBV flow device verification service.
+  catalog:
+    organization:
+      - name: Endress+Hauser
+        site: https://www.endress.com
+    application:
+      tagline: Heartbeat verification for Endress+Hauser flow devices.
+      icon: icon.png
+    author:
+      - name: Endress+Hauser
+        email: support@endress.com
+deploymentProfiles:
+  - type: compose
+    id: default
+    components:
+      - name: default
+        properties:
+          repository: oci://example.com/my-app # overwritten by `bart`, this is just a placeholder
+          revision: "0.0.0" # overwritten by `bart`, this is just a placeholder
+    requiredResources:
+      cpu:
+        cores: 1
+        architectures:
+          - amd64
+          - arm
+parameters:
+  serialNumber:
+    value: "713814705"
+    targets:
+      - pointer: serialNumber
+        components: ["default"]
+  encryptionEnabled:
+    value: false
+    targets:
+      - pointer: encryptionEnabled
+        components: ["default"]
+  logLevel:
+    value: "debug"
+    targets:
+      - pointer: logLevel
+        components: ["default"]
+  appIdOTConnector:
+    value: "urn:endress.com/DSFISProxy/nd/202006260900"
+    targets:
+      - pointer: appIdOTConnector
+        components: ["default"]
+configuration:
+  sections:
+    - name: Device
+      settings:
+        - parameter: serialNumber
+          name: Serial Number
+          description: Device serial number.
+          schema: text
+        - parameter: appIdOTConnector
+          name: OT Connector App ID
+          description: OT connector application identifier (URN).
+          schema: text
+    - name: Operation
+      settings:
+        - parameter: encryptionEnabled
+          name: Encryption Enabled
+          description: Enable transport encryption.
+          schema: flag
+        - parameter: logLevel
+          name: Log Level
+          description: Logging verbosity (e.g. debug, info, warn, error).
+          schema: text
+  schema:
+    - name: text
+      dataType: string
+    - name: flag
+      dataType: boolean
